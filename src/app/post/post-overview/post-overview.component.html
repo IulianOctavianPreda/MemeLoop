@@ -1,0 +1,25 @@
+<ion-content>
+    <ion-virtual-scroll
+        *ngIf="loaded"
+        [items]="items"
+        [trackBy]="trackByFn"
+        approxItemHeight="320px"
+    >
+        <ion-card *virtualItem="let item; let itemBounds = bounds">
+            <ion-card-header>
+                <ion-card-title>{{ item.name }}</ion-card-title>
+            </ion-card-header>
+            <div [style]>
+                <ion-img [src]="item.imgSrc" [alt]="item.name"></ion-img>
+            </div>
+            <ion-card-content>{{ item.content }}</ion-card-content>
+        </ion-card>
+    </ion-virtual-scroll>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data..."
+        ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "MemeLoop",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

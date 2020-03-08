@@ -1,0 +1,78 @@
+<ion-menu
+    contentId="{{ contentId }}"
+    menuId="main-content"
+    type="overlay"
+    swipeGesture="true"
+    side="start"
+>
+    <ion-content>
+        <ion-list id="inbox-list">
+            <!-- <ng-container
+                *ngTemplateOutlet="
+                    !isAuthenticated ? notAuthTemplate : authTemplate;
+                    context: { $implicit: 'World' }
+                "
+            >
+            </ng-container>
+
+            <ng-template #notAuthTemplate>
+                <ion-list-header>
+                    <IonAvatar>
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+    </IonAvatar>
+                    <span> Guest</span>
+                </ion-list-header>
+            </ng-template>          
+
+            <ng-template #authTemplate let-user="user">
+                <ion-menu-toggle auto-hide="false" menu="main-content">
+                    <ion-item
+                        [routerLink]="profile"
+                        routerDirection="root"
+                        lines="none"
+                        detail="false"
+                    >
+                        <ion-icon
+                            slot="start"
+                            [ios]="p.icon + '-outline'"
+                            [md]="p.icon + '-sharp'"
+                        ></ion-icon>
+                        <ion-list-header>{{ user.username }}</ion-list-header>
+                        <ion-note>{{ user.email }}</ion-note>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ng-template> -->
+
+            <!-- <ion-menu-toggle
+                auto-hide="false"
+                menu="main-content"
+                *ngFor="let p of appPages; let i = index"
+            >
+                <ion-item
+                    (click)="selectedIndex = i"
+                    routerDirection="root"
+                    [routerLink]="[p.url]"
+                    lines="none"
+                    detail="false"
+                    [class.selected]="selectedIndex == i"
+                >
+                    <ion-icon
+                        slot="start"
+                        [ios]="p.icon + '-outline'"
+                        [md]="p.icon + '-sharp'"
+                    ></ion-icon>
+                    <ion-label>{{ p.title }}</ion-label>
+                </ion-item>
+            </ion-menu-toggle> -->
+        </ion-list>
+
+        <ion-list id="labels-list">
+            <ion-list-header>Categories</ion-list-header>
+
+            <ion-item *ngFor="let category of categories" lines="none">
+                <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+                <ion-label>{{ category }}</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
