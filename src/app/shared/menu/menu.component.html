@@ -10,7 +10,7 @@
             <ng-container
                 *ngTemplateOutlet="
                     !isAuthenticated ? notAuthTemplate : authTemplate;
-                    context: { $implicit: 'World' }
+                    context: { user: user }
                 "
             >
             </ng-container>
@@ -36,11 +36,11 @@
                     >
                         <ion-icon
                             slot="start"
-                            [ios]="p.icon + '-outline'"
-                            [md]="p.icon + '-sharp'"
+                            [ios]="'home-outline'"
+                            [md]="'home-sharp'"
                         ></ion-icon>
                         <ion-list-header>{{ user.username }}</ion-list-header>
-                        <ion-note>{{ user.email }}</ion-note>
+                        <!-- <ion-note>{{ user.email }}</ion-note> -->
                     </ion-item>
                 </ion-menu-toggle>
             </ng-template>

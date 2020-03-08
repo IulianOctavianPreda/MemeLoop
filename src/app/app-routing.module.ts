@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
+import { AboutComponent } from "./shared/about/about.component";
 import { CategoryCountriesComponent } from "./shared/category-countries/category-countries.component";
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
             {
                 path: "country",
                 component: CategoryCountriesComponent
+            },
+            {
+                path: "about",
+                component: AboutComponent
             }
         ]
     }

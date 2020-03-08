@@ -8,13 +8,21 @@ import { Component, Input, OnInit } from "@angular/core";
 export class MenuComponent implements OnInit {
     @Input() contentId: string;
 
-    isAuthenticated: boolean = false;
-
+    isAuthenticated: boolean = true;
+    user = {
+        username: "MyUser",
+        email: "myUser@emai.com"
+    };
     appPages = [
         {
             url: "country",
             icon: "earth",
             title: "By country"
+        },
+        {
+            url: "about",
+            icon: "about",
+            title: "About"
         }
     ];
 

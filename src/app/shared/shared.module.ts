@@ -6,9 +6,10 @@ import { IonicModule } from "@ionic/angular";
 import { CategoryCountriesComponent } from "./category-countries/category-countries.component";
 import { LayoutHeaderComponent } from "./layout-header/layout-header.component";
 import { MenuComponent } from "./menu/menu.component";
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-    declarations: [LayoutHeaderComponent, MenuComponent, CategoryCountriesComponent],
+    declarations: [LayoutHeaderComponent, MenuComponent, CategoryCountriesComponent, AboutComponent],
     imports: [CommonModule, IonicModule, RouterModule],
     exports: [
         LayoutHeaderComponent,
@@ -16,7 +17,8 @@ import { MenuComponent } from "./menu/menu.component";
         CategoryCountriesComponent,
         CommonModule,
         IonicModule,
-        RouterModule
+        RouterModule,
+        AboutComponent
     ]
 })
 export class SharedModule {}
