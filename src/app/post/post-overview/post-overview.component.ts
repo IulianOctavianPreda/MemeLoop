@@ -28,7 +28,6 @@ export class PostOverviewComponent implements OnInit {
 
     @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
     @ViewChild(IonVirtualScroll, { static: false }) virtualScroll: IonVirtualScroll;
-
     ngOnInit() {}
 
     constructor() {

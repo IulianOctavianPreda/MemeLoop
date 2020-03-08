@@ -10,6 +10,14 @@ export class MenuComponent implements OnInit {
 
     isAuthenticated: boolean = false;
 
+    appPages = [
+        {
+            url: "country",
+            icon: "earth",
+            title: "By country"
+        }
+    ];
+
     public categories = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
 
     constructor() {}
