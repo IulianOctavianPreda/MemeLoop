@@ -3,6 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 import { AboutComponent } from "./shared/about/about.component";
 import { CategoryCountriesComponent } from "./shared/category-countries/category-countries.component";
+import { ProfileComponent } from "./shared/profile/profile.component";
+import { UploadComponent } from "./shared/upload/upload.component";
 
 const routes: Routes = [
     {
@@ -16,6 +18,14 @@ const routes: Routes = [
             {
                 path: "posts",
                 loadChildren: () => import("./post/post.module").then((m) => m.PostModule)
+            },
+            {
+                path: "profile",
+                component: ProfileComponent
+            },
+            {
+                path: "upload",
+                component: UploadComponent
             },
             {
                 path: "country",

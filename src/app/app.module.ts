@@ -1,6 +1,9 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
+import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
@@ -20,4 +23,9 @@ import { SharedModule } from "./shared/shared.module";
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+    constructor(library: FaIconLibrary) {
+        // Add multiple icons to the library
+        library.addIconPacks(fas, far);
+    }
+}

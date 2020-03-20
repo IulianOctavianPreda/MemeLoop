@@ -22,14 +22,14 @@
                             src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
                         />
                     </ion-avatar>
-                    <span> Guest</span>
+                    <span>Guest</span>
                 </ion-list-header>
             </ng-template>
 
             <ng-template #authTemplate let-user="user">
                 <ion-menu-toggle auto-hide="false" menu="main-content">
                     <ion-item
-                        [routerLink]="profile"
+                        [routerLink]="['./profile']"
                         routerDirection="root"
                         lines="none"
                         detail="false"

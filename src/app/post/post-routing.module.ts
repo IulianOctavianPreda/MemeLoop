@@ -7,18 +7,18 @@ import { PostOverviewComponent } from "./post-overview/post-overview.component";
 const routes: Routes = [
     {
         path: "",
-        pathMatch: "full",
+        // pathMatch: "full",
         children: [
             {
                 path: "",
                 component: PostOverviewComponent
             },
+            // {
+            //     path: "overview",
+            //     component: PostOverviewComponent
+            // },
             {
-                path: "overview",
-                component: PostOverviewComponent
-            },
-            {
-                path: "detail/:id",
+                path: ":id",
                 component: PostDetailComponent
             }
         ]

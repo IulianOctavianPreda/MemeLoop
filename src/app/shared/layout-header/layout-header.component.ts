@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "app-layout-header",
@@ -7,7 +8,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutHeaderComponent implements OnInit {
-    constructor() {}
+    constructor(private router: Router) {}
 
     ngOnInit() {}
+
+    redirectToUpload() {
+        this.router.navigate(["/upload"]);
+    }
 }

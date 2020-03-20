@@ -15,6 +15,11 @@ export class MenuComponent implements OnInit {
     };
     appPages = [
         {
+            url: "posts",
+            icon: "smiley",
+            title: "All Posts"
+        },
+        {
             url: "country",
             icon: "earth",
             title: "By country"

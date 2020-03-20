@@ -1,20 +1,46 @@
 <ion-content>
-    <ion-virtual-scroll
-        *ngIf="loaded"
-        [items]="items"
-        [trackBy]="trackByFn"
-        approxItemHeight="320px"
-    >
-        <ion-card *virtualItem="let item; let itemBounds = bounds">
-            <ion-card-header>
-                <ion-card-title>{{ item.name }}</ion-card-title>
-            </ion-card-header>
-            <div [style]>
-                <ion-img [src]="item.imgSrc" [alt]="item.name"></ion-img>
-            </div>
-            <ion-card-content>{{ item.content }}</ion-card-content>
-        </ion-card>
-    </ion-virtual-scroll>
+    <ion-grid>
+        <ion-virtual-scroll
+            *ngIf="loaded"
+            [items]="items"
+            [trackBy]="trackByFn"
+            approxItemHeight="320px"
+        >
+            <ion-row
+                class="ion-justify-content-center"
+                *virtualItem="let item; let itemBounds = bounds"
+            >
+                <ion-col sizeLg="4" sizeMd="12" sizeXs="12">
+                    <ion-card>
+                        <ion-card-header>
+                            <ion-card-title>
+                                {{ item.name }}
+                            </ion-card-title>
+                        </ion-card-header>
+                        <div [style]>
+                            <a [routerLink]="['./', item.id]">
+                                <ion-img [src]="item.imgSrc" [alt]="item.name"></ion-img>
+                            </a>
+                        </div>
+                        <ion-card-content>
+                            <div>
+                                <ion-button fill="solid"
+                                    ><fa-icon [icon]="['fas', 'arrow-up']"></fa-icon
+                                ></ion-button>
+                                <ion-button fill="solid"
+                                    ><fa-icon [icon]="['fas', 'arrow-down']"></fa-icon
+                                ></ion-button>
+                                <ion-button fill="solid"
+                                    ><fa-icon [icon]="['fas', 'share-alt-square']"></fa-icon
+                                ></ion-button>
+                            </div>
+                        </ion-card-content>
+                        <!-- <ion-card-content>{{ item.content }}</ion-card-content> -->
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-virtual-scroll>
+    </ion-grid>
 
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content
