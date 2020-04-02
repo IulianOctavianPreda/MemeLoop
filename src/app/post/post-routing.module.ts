@@ -3,23 +3,26 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { PostDetailComponent } from "./post-detail/post-detail.component";
 import { PostOverviewComponent } from "./post-overview/post-overview.component";
+import { PostDetailResolve } from "./services/post-detail.resolve";
+import { PostsResolve } from "./services/posts.resolve";
 
 const routes: Routes = [
     {
         path: "",
-        // pathMatch: "full",
         children: [
             {
                 path: "",
-                component: PostOverviewComponent
+                component: PostOverviewComponent,
+                resolve: {
+                    initialPosts: PostsResolve
+                }
             },
-            // {
-            //     path: "overview",
-            //     component: PostOverviewComponent
-            // },
             {
                 path: ":id",
-                component: PostDetailComponent
+                component: PostDetailComponent,
+                resolve: {
+                    post: PostDetailResolve
+                }
             }
         ]
     }

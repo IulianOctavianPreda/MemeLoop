@@ -1,11 +1,6 @@
 <ion-content>
     <ion-grid>
-        <ion-virtual-scroll
-            *ngIf="loaded"
-            [items]="items"
-            [trackBy]="trackByFn"
-            approxItemHeight="320px"
-        >
+        <ion-virtual-scroll [items]="items" [trackBy]="trackByFn" approxItemHeight="800px">
             <ion-row
                 class="ion-justify-content-center"
                 *virtualItem="let item; let itemBounds = bounds"
@@ -14,28 +9,17 @@
                     <ion-card>
                         <ion-card-header>
                             <ion-card-title>
-                                {{ item.name }}
+                                {{ item.title }}
                             </ion-card-title>
                         </ion-card-header>
                         <div [style]>
                             <a [routerLink]="['./', item.id]">
-                                <ion-img [src]="item.imgSrc" [alt]="item.name"></ion-img>
+                                <ion-img [src]="item.path" [alt]="item.title"></ion-img>
                             </a>
                         </div>
                         <ion-card-content>
-                            <div>
-                                <ion-button fill="solid"
-                                    ><fa-icon [icon]="['fas', 'arrow-up']"></fa-icon
-                                ></ion-button>
-                                <ion-button fill="solid"
-                                    ><fa-icon [icon]="['fas', 'arrow-down']"></fa-icon
-                                ></ion-button>
-                                <ion-button fill="solid"
-                                    ><fa-icon [icon]="['fas', 'share-alt-square']"></fa-icon
-                                ></ion-button>
-                            </div>
+                            <app-stats [stats]="item.stats"></app-stats>
                         </ion-card-content>
-                        <!-- <ion-card-content>{{ item.content }}</ion-card-content> -->
                     </ion-card>
                 </ion-col>
             </ion-row>

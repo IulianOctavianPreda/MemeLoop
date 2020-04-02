@@ -1,1 +1,16 @@
-<p>comment-tree works!</p>
+<ng-container *ngFor="let item of comments">
+    <!-- <ion-item detail button (click)="showMore()"> -->
+    <ion-item>
+        <ion-label>
+            {{ item.comment }}
+        </ion-label>
+        <ion-note slot="end"
+            >{{ item.user.name }}
+            <app-stats [stats]="item.stats" [size]="small" [fill]="clear"></app-stats
+        ></ion-note>
+    </ion-item>
+    <ion-item-group class="recursivePadding" *ngIf="!!item.reply && item.reply.length > 0">
+        <!-- <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon> -->
+        <app-comment-tree [comments]="item.reply"></app-comment-tree>
+    </ion-item-group>
+</ng-container>
