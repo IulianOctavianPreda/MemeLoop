@@ -11,12 +11,12 @@
         "start": "ng serve",
         "build": "ng build",
         "watch": "ng build --watch",
-        "add-android": "npx cap add android",
-        "build-android": "ng build && npx cap copy android && cd android && ./gradlew assembleDebug && cd ..",
-        "start-android": "ng build && npx cap copy android && cd android && ./gradlew assembleDebug && ./gradlew installDebug && cd ..",
-        "add-electron": "npx cap add electron",
-        "build-electron": "ng build && npx cap copy electron",
-        "start-electron": "ng build && npx cap copy electron && npx cap open electron"
+        "add:android": "npx cap add android",
+        "build:android": "ng build && npx cap copy android && cd ./android && ./gradlew assembleDebug && cd ../",
+        "start:android": "ng build && npx cap copy android && cd ./android && ./gradlew assembleDebug && ./gradlew installDebug && cd ../",
+        "add:electron": "npx cap add electron",
+        "build:electron": "ng build && npx cap copy electron",
+        "start:electron": "ng build && npx cap copy electron && npx cap open electron"
     },
     "private": true,
     "dependencies": {
@@ -26,6 +26,7 @@
         "@angular/platform-browser": "~8.2.14",
         "@angular/platform-browser-dynamic": "~8.2.14",
         "@angular/router": "~8.2.14",
+        "@capacitor/android": "^2.0.1",
         "@capacitor/core": "1.5.1",
         "@fortawesome/angular-fontawesome": "^0.6.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.27",
