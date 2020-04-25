@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
-import { AboutComponent } from "./shared/about/about.component";
-import { CategoryCountriesComponent } from "./shared/category-countries/category-countries.component";
-import { ProfileComponent } from "./shared/profile/profile.component";
-import { UploadComponent } from "./shared/upload/upload.component";
+import { ProfileComponent } from "../pages/profile/profile.component";
+import { AboutComponent } from "../shared/about/about.component";
+import { CategoryCountriesComponent } from "../shared/category-countries/category-countries.component";
+import { UploadComponent } from "../shared/upload/upload.component";
 
 const routes: Routes = [
     {
@@ -13,34 +13,34 @@ const routes: Routes = [
             {
                 path: "",
                 pathMatch: "full",
-                redirectTo: "posts"
+                redirectTo: "posts",
             },
             {
                 path: "posts",
-                loadChildren: () => import("./post/post.module").then((m) => m.PostModule)
+                loadChildren: () => import("../pages/post/post.module").then((m) => m.PostModule),
             },
             {
                 path: "profile",
-                component: ProfileComponent
+                component: ProfileComponent,
             },
             {
                 path: "upload",
-                component: UploadComponent
+                component: UploadComponent,
             },
             {
                 path: "country",
-                component: CategoryCountriesComponent
+                component: CategoryCountriesComponent,
             },
             {
                 path: "about",
-                component: AboutComponent
-            }
-        ]
-    }
+                component: AboutComponent,
+            },
+        ],
+    },
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class AppRoutingModule {}

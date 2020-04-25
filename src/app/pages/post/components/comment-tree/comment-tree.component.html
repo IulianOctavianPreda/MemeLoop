@@ -6,8 +6,9 @@
         </ion-label>
         <ion-note slot="end"
             >{{ item.user.name }}
-            <app-stats [stats]="item.stats" [size]="small" [fill]="clear"></app-stats
-        ></ion-note>
+            <!-- <app-stats [stats]="item.stats" [size]="small" [fill]="clear"></app-stats -->
+            ></ion-note
+        >
     </ion-item>
     <ion-item-group class="recursivePadding" *ngIf="!!item.reply && item.reply.length > 0">
         <!-- <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon> -->

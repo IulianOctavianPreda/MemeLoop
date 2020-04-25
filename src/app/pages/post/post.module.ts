@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from "../../shared/shared.module";
 import { CommentTreeComponent } from "./components/comment-tree/comment-tree.component";
 import { MediaComponent } from "./components/media/media.component";
 import { StatsComponent } from "./components/stats/stats.component";
@@ -16,9 +16,9 @@ import { PostsResolve } from "./services/posts.resolve";
         PostDetailComponent,
         StatsComponent,
         MediaComponent,
-        CommentTreeComponent
+        CommentTreeComponent,
     ],
     providers: [PostDetailResolve, PostsResolve],
-    imports: [PostRoutingModule, SharedModule]
+    imports: [PostRoutingModule, SharedModule],
 })
 export class PostModule {}

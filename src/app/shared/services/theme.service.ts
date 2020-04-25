@@ -1,16 +1,16 @@
 import { DOCUMENT } from "@angular/common";
 import { Inject, Injectable } from "@angular/core";
-import { Storage } from "@ionic/storage";
 import * as Color from "color";
 
 import { ThemeVariables } from "../enums/theme-variables";
 import { Themes } from "../enums/themes";
+import { StorageService } from "./storage.service";
 
 @Injectable({
-    providedIn: "root"
+    providedIn: "root",
 })
 export class ThemeService {
-    constructor(@Inject(DOCUMENT) private document: Document, private storage: Storage) {
+    constructor(@Inject(DOCUMENT) private document: Document, private storage: StorageService) {
         // this.setStoredTheme();
     }
 
@@ -71,7 +71,7 @@ export class ThemeService {
             danger,
             dark,
             medium,
-            light
+            light,
         } = colors;
 
         const shadeRatio = 0.1;

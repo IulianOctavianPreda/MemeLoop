@@ -4,11 +4,11 @@ import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { IonicModule } from "@ionic/angular";
 
+import { LayoutHeaderComponent } from "../core/layout-header/layout-header.component";
+import { MenuComponent } from "../core/menu/menu.component";
+import { ProfileComponent } from "../pages/profile/profile.component";
 import { AboutComponent } from "./about/about.component";
 import { CategoryCountriesComponent } from "./category-countries/category-countries.component";
-import { LayoutHeaderComponent } from "./layout-header/layout-header.component";
-import { MenuComponent } from "./menu/menu.component";
-import { ProfileComponent } from "./profile/profile.component";
 import { UploadComponent } from "./upload/upload.component";
 
 @NgModule({
@@ -18,7 +18,7 @@ import { UploadComponent } from "./upload/upload.component";
         CategoryCountriesComponent,
         AboutComponent,
         ProfileComponent,
-        UploadComponent
+        UploadComponent,
     ],
     imports: [CommonModule, IonicModule, RouterModule, FontAwesomeModule],
     exports: [
@@ -31,7 +31,7 @@ import { UploadComponent } from "./upload/upload.component";
         AboutComponent,
         ProfileComponent,
         FontAwesomeModule,
-        UploadComponent
-    ]
+        UploadComponent,
+    ],
 })
 export class SharedModule {}

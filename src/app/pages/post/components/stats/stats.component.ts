@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
-import { StatsDetail } from "./../../../api/types/stats-detail";
+import { StatsDetail } from "../../../../api/types/stats-detail";
 
 @Component({
     selector: "app-stats",
     templateUrl: "./stats.component.html",
-    styleUrls: ["./stats.component.scss"]
+    styleUrls: ["./stats.component.scss"],
 })
 export class StatsComponent implements OnInit {
     @Input() stats: StatsDetail;

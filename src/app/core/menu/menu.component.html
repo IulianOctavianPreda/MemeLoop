@@ -50,14 +50,9 @@
                 menu="main-content"
                 *ngFor="let p of appPages; let i = index"
             >
-                <ion-item
-                    (click)="selectedIndex = i"
-                    routerDirection="root"
-                    [routerLink]="[p.url]"
-                    lines="none"
-                    detail="false"
-                    [class.selected]="selectedIndex == i"
-                >
+                <!-- (click)="selectedIndex = i" -->
+                <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false">
+                    <!-- [class.selected]="selectedIndex == i" -->
                     <ion-icon
                         slot="start"
                         [ios]="p.icon + '-outline'"

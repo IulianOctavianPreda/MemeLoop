@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { IonInfiniteScroll, IonVirtualScroll } from "@ionic/angular";
 
-import { PostApiService } from "./../../api/apis/posts.api";
-import { PostDetail } from "./../../api/types/post-detail";
+import { PostApiService } from "../../../api/apis/posts.api";
+import { PostDetail } from "../../../api/types/post-detail";
 
 @Component({
     selector: "app-post-overview",
     templateUrl: "./post-overview.component.html",
-    styleUrls: ["./post-overview.component.scss"]
+    styleUrls: ["./post-overview.component.scss"],
 })
 export class PostOverviewComponent implements OnInit {
     @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
