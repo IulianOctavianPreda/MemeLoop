@@ -1,3 +1,4 @@
+import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
@@ -9,6 +10,7 @@ import { MenuComponent } from "../core/menu/menu.component";
 import { ProfileComponent } from "../pages/profile/profile.component";
 import { AboutComponent } from "./about/about.component";
 import { CategoryCountriesComponent } from "./category-countries/category-countries.component";
+import { MapsComponent } from "./maps/maps.component";
 import { UploadComponent } from "./upload/upload.component";
 
 @NgModule({
@@ -19,8 +21,18 @@ import { UploadComponent } from "./upload/upload.component";
         AboutComponent,
         ProfileComponent,
         UploadComponent,
+        MapsComponent,
     ],
-    imports: [CommonModule, IonicModule, RouterModule, FontAwesomeModule],
+    imports: [
+        CommonModule,
+        IonicModule,
+        RouterModule,
+        FontAwesomeModule,
+        AgmCoreModule.forRoot({
+            apiKey: "key",
+            libraries: ["geometry", "places"],
+        }),
+    ],
     exports: [
         LayoutHeaderComponent,
         MenuComponent,
@@ -32,6 +44,8 @@ import { UploadComponent } from "./upload/upload.component";
         ProfileComponent,
         FontAwesomeModule,
         UploadComponent,
+        AgmCoreModule,
     ],
+    providers: [GoogleMapsAPIWrapper],
 })
 export class SharedModule {}

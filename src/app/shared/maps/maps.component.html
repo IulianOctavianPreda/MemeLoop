@@ -1,0 +1,44 @@
+<ion-content>
+    <ion-item>
+        <ion-searchbar
+            (keydown.enter)="$event.preventDefault()"
+            placeholder="Search Location"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="off"
+            type="text"
+            #searchPlace
+        ></ion-searchbar>
+        <ion-searchbar
+            (keydown.enter)="$event.preventDefault()"
+            placeholder="Search Destination"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="off"
+            type="text"
+            #searchDestination
+        ></ion-searchbar>
+    </ion-item>
+
+    <agm-map
+        [zoom]="zoom"
+        [disableDefaultUI]="false"
+        [zoomControl]="false"
+        [latitude]="origin.latitude"
+        [longitude]="origin.longitude"
+        (mapReady)="onMapReady($event)"
+    >
+        <agm-marker
+            [latitude]="origin.latitude"
+            [longitude]="origin.longitude"
+            [markerDraggable]="false"
+        >
+        </agm-marker>
+        <agm-marker
+            [latitude]="destination.latitude"
+            [longitude]="destination.longitude"
+            [markerDraggable]="false"
+        >
+        </agm-marker>
+    </agm-map>
+</ion-content>

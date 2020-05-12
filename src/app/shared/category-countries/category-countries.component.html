@@ -1,15 +1,12 @@
 <ion-content>
     <ion-card>
         <ion-card-header>
-            <ion-card-title>Select country to get all it's posts</ion-card-title>
+            <ion-card-title>Google Maps</ion-card-title>
         </ion-card-header>
-        <div>
-            <ion-item [routerLink]="['/posts']" routerDirection="root" lines="none" detail="false">
-                <ion-img
-                    src="https://upload.wikimedia.org/wikipedia/commons/b/bd/World_Map_Gini_coefficient.png"
-                ></ion-img>
-            </ion-item>
-        </div>
-        <ion-card-content></ion-card-content>
+        <ion-card-content>
+            <div class="map" style="height: 800px;">
+                <app-maps></app-maps>
+            </div>
+        </ion-card-content>
     </ion-card>
 </ion-content>
