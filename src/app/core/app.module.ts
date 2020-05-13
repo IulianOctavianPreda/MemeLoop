@@ -17,6 +17,7 @@ import { AppService } from "./app.service";
         IonicModule.forRoot(),
         AppRoutingModule,
         SharedModule,
+
         IonicStorageModule.forRoot(),
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

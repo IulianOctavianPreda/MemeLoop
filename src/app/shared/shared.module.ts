@@ -1,6 +1,7 @@
 import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { IonicModule } from "@ionic/angular";
@@ -28,6 +29,7 @@ import { UploadComponent } from "./upload/upload.component";
         IonicModule,
         RouterModule,
         FontAwesomeModule,
+        FormsModule,
         AgmCoreModule.forRoot({
             apiKey: "key",
             libraries: ["geometry", "places"],
@@ -45,6 +47,7 @@ import { UploadComponent } from "./upload/upload.component";
         FontAwesomeModule,
         UploadComponent,
         AgmCoreModule,
+        FormsModule,
     ],
     providers: [GoogleMapsAPIWrapper],
 })
