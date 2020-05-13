@@ -4,19 +4,34 @@
     "description": "An Amazing Capacitor App",
     "main": "index.js",
     "scripts": {
-        "electron:start": "electron ./"
+        "electron:start": "electron ./",
+        "electron:package": "electron-builder build ",
+        "electron:package1": "electron-builder build --win -c.extraMetadata.main=./electron/index.js --publish never"
     },
     "dependencies": {
         "@capacitor/electron": "^1.5.2",
         "electron-is-dev": "^1.1.0"
     },
     "devDependencies": {
-        "electron": "^3.0.10"
+        "electron": "^3.0.10",
+        "electron-builder": "^22.5.1"
     },
     "keywords": [
         "capacitor",
         "electron"
     ],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "build": {
+        "productName": "PVM Player",
+        "appId": "scripter.PVMplayer",
+        "win": {
+            "target": [
+                "portable"
+            ]
+        },
+        "portable": {
+            "artifactName": "pvmplayer_portable.exe"
+        }
+    }
 }
