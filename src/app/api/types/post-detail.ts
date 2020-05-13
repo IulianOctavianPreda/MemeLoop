@@ -15,3 +15,8 @@ export interface PostDetail {
     comments: CommentDetail[];
     stats: StatsDetail;
 }
+
+export interface PostSave {
+    title: string;
+    path: string;
+}
