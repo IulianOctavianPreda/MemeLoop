@@ -11,6 +11,7 @@ import { MenuComponent } from "../core/menu/menu.component";
 import { ProfileComponent } from "../pages/profile/profile.component";
 import { AboutComponent } from "./about/about.component";
 import { CategoryCountriesComponent } from "./category-countries/category-countries.component";
+import { LoginComponent } from "./login/login.component";
 import { MapsComponent } from "./maps/maps.component";
 import { UploadComponent } from "./upload/upload.component";
 
@@ -23,6 +24,7 @@ import { UploadComponent } from "./upload/upload.component";
         ProfileComponent,
         UploadComponent,
         MapsComponent,
+        LoginComponent,
     ],
     imports: [
         CommonModule,
@@ -48,7 +50,9 @@ import { UploadComponent } from "./upload/upload.component";
         UploadComponent,
         AgmCoreModule,
         FormsModule,
+        LoginComponent,
     ],
     providers: [GoogleMapsAPIWrapper],
+    entryComponents: [LoginComponent],
 })
 export class SharedModule {}

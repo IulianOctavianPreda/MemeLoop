@@ -16,14 +16,16 @@
             </ng-container>
 
             <ng-template #notAuthTemplate>
-                <ion-list-header>
-                    <ion-avatar>
-                        <img
-                            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                        />
-                    </ion-avatar>
-                    <span>Guest</span>
-                </ion-list-header>
+                <ion-menu-toggle (click)="presentModal()" auto-hide="false" menu="main-content">
+                    <ion-item lines="none" detail="false">
+                        <ion-icon
+                            slot="start"
+                            [ios]="'home-outline'"
+                            [md]="'home-sharp'"
+                        ></ion-icon>
+                        <ion-list-header>Login/Sign-up</ion-list-header>
+                    </ion-item>
+                </ion-menu-toggle>
             </ng-template>
 
             <ng-template #authTemplate let-user="user">
@@ -39,7 +41,7 @@
                             [ios]="'home-outline'"
                             [md]="'home-sharp'"
                         ></ion-icon>
-                        <ion-list-header>{{ user.username }}</ion-list-header>
+                        <ion-list-header>{{ user.name }}</ion-list-header>
                         <!-- <ion-note>{{ user.email }}</ion-note> -->
                     </ion-item>
                 </ion-menu-toggle>
