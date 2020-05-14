@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
+import { Router } from "@angular/router";
 
 import { PostApiService } from "./../../api/apis/posts.api";
 import { CameraService } from "./../services/camera.service";
@@ -16,7 +17,8 @@ export class UploadComponent implements OnInit {
     constructor(
         private cameraService: CameraService,
         private sanitizer: DomSanitizer,
-        private postService: PostApiService
+        private postService: PostApiService,
+        private route: Router
     ) {}
 
     ngOnInit() {}
@@ -41,9 +43,12 @@ export class UploadComponent implements OnInit {
     }
 
     upload() {
-        this.postService.upload({
-            title: this.title,
-            path: this.uploadedImage,
-        });
+        if (!!this.title && !!this.uploadedImage) {
+            const id = this.postService.upload({
+                title: this.title,
+                path: this.uploadedImage,
+            });
+            this.route.navigate(["posts", id]);
+        }
     }
 }

@@ -12,10 +12,18 @@ export class StatsComponent implements OnInit {
     @Input() size = "default";
     @Input() fill = "solid";
 
-    @Output() upvoteCallback: EventEmitter<void>;
-    @Output() downvoteCallback: EventEmitter<void>;
+    @Output() upvoteCallback: EventEmitter<void> = new EventEmitter<void>();
+    @Output() downvoteCallback: EventEmitter<void> = new EventEmitter<void>();
 
     constructor() {}
 
     ngOnInit() {}
+
+    upvote() {
+        this.upvoteCallback.emit();
+    }
+
+    downvote() {
+        this.downvoteCallback.emit();
+    }
 }

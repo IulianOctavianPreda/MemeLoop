@@ -10,8 +10,16 @@
                         <ion-img [src]="item.path" [alt]="item.title"></ion-img>
                     </div>
                     <ion-card-content>
-                        <app-stats [stats]="item.stats"></app-stats>
-                        <app-comment-tree [comments]="item.comments"></app-comment-tree>
+                        <app-stats
+                            [stats]="item.stats"
+                            (upvoteCallback)="upvote(event)"
+                            (downvoteCallback)="downvote(event)"
+                        ></app-stats>
+                        <ion-text>Comments:</ion-text>
+                        <app-comment-tree
+                            [comments]="item.comments"
+                            (addComment)="addComment($event)"
+                        ></app-comment-tree>
                     </ion-card-content>
                 </ion-card>
             </ion-col>

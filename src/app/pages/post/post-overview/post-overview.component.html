@@ -1,6 +1,6 @@
 <ion-content>
     <ion-grid>
-        <ion-virtual-scroll [items]="items" [trackBy]="trackByFn" approxItemHeight="800px">
+        <ion-virtual-scroll [items]="items" [trackBy]="trackByFn" approxItemHeight="600px">
             <ion-row
                 class="ion-justify-content-center"
                 *virtualItem="let item; let itemBounds = bounds"
@@ -14,11 +14,17 @@
                         </ion-card-header>
                         <div [style]>
                             <a [routerLink]="['./', item.id]">
-                                <ion-img [src]="item.path" [alt]="item.title"></ion-img>
+                                <img [src]="item.path" [alt]="item.title" />
+
+                                <!-- <ion-img [src]="item.path" [alt]="item.title"></ion-img> -->
                             </a>
                         </div>
                         <ion-card-content>
-                            <app-stats [stats]="item.stats"></app-stats>
+                            <app-stats
+                                [stats]="item.stats"
+                                (upvoteCallback)="upvote(event, item.id)"
+                                (downvoteCallback)="downvote(event, item.id)"
+                            ></app-stats>
                         </ion-card-content>
                     </ion-card>
                 </ion-col>

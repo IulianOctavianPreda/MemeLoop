@@ -27,7 +27,11 @@
                             <ion-img [src]="uploadedImage"> </ion-img>
                         </ion-item> -->
 
-                        <ion-button fill="solid" type="submit" (click)="upload()"
+                        <ion-button
+                            fill="solid"
+                            type="submit"
+                            (click)="upload()"
+                            [disabled]="!uploadedImage || !title"
                             >Submit</ion-button
                         >
                     </ion-card-content>

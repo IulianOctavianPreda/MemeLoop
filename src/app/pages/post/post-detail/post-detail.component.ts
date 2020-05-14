@@ -17,4 +17,34 @@ export class PostDetailComponent implements OnInit {
     ngOnInit() {
         this.item = this.activatedRoute.snapshot.data.post;
     }
+
+    upvote(event) {
+        if (this.item["alreadyUpvoted"] === true) {
+        } else {
+            this.service
+                .upvote(this.item.id)
+                .toPromise()
+                .then((post) => {
+                    this.item.stats = post.stats;
+                    this.item["alreadyUpvoted"] = true;
+                });
+        }
+    }
+
+    downvote(event) {
+        if (this.item["alreadyDownvoted"] === true) {
+        } else {
+            this.service
+                .downvote(this.item.id)
+                .toPromise()
+                .then((post) => {
+                    this.item.stats = post.stats;
+                    this.item["alreadyDownvoted"] = true;
+                });
+        }
+    }
+
+    addComment(event) {
+        this.service.addComment(this.item.id, event);
+    }
 }
