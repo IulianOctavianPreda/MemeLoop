@@ -10,20 +10,20 @@ const post1 = {
     },
     comments: [
         {
-            reply: [
-                {
-                    reply: [],
-                    comment: "You said it bro",
-                    stats: {
-                        upvotes: 18,
-                        downvotes: 0,
-                    },
-                    user: {
-                        name: "Bro3",
-                    },
-                    id: 3,
-                },
-            ],
+            // reply: [
+            //     {
+            //         reply: [],
+            //         comment: "You said it bro",
+            //         stats: {
+            //             upvotes: 18,
+            //             downvotes: 0,
+            //         },
+            //         user: {
+            //             name: "Bro3",
+            //         },
+            //         id: 3,
+            //     },
+            // ],
             comment: "Stay home, don't risk it",
             stats: {
                 upvotes: 24,
@@ -55,20 +55,20 @@ const post2 = {
     path: "./assets/images/SecoundChance.jpg",
     comments: [
         {
-            reply: [
-                {
-                    reply: [],
-                    comment: "You said it bro",
-                    stats: {
-                        upvotes: 13,
-                        downvotes: 0,
-                    },
-                    user: {
-                        name: "Bro3",
-                    },
-                    id: 3,
-                },
-            ],
+            // reply: [
+            //     {
+            //         reply: [],
+            //         comment: "You said it bro",
+            //         stats: {
+            //             upvotes: 13,
+            //             downvotes: 0,
+            //         },
+            //         user: {
+            //             name: "Bro3",
+            //         },
+            //         id: 3,
+            //     },
+            // ],
             comment: "What is this, the 70's?",
             stats: {
                 upvotes: 14,

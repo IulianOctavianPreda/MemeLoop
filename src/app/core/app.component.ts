@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
-import { Platform } from "@ionic/angular";
 
+import { PostApiService } from "../api/apis/posts.api";
+import { UserApiService } from "../api/apis/users.api";
 import { ModalService } from "./../shared/services/modal.service";
 import { NetworkService } from "./../shared/services/network.service";
 import { NotificationService } from "./../shared/services/notification.service";
@@ -16,14 +17,15 @@ export class AppComponent implements OnInit {
         private networkService: NetworkService,
         private modalService: ModalService,
         private notificationService: NotificationService,
-        private platform: Platform
-    ) {}
+        postService: PostApiService,
+        userService: UserApiService
+    ) {
+        // workaround so the behaviour subject will be initialized with the correct values form storage
+        postService.get();
+        userService.getLoggedInUser();
+    }
 
     ngOnInit() {
-        this.platform.backButton.subscribe(() => {
-            navigator["app"].exitApp();
-        });
-
         const platform = Capacitor.getPlatform();
         if (platform !== "web") {
             this.networkService.getStatus().then((status) => {
