@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { Platform } from "@ionic/angular";
+import { Injectable } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
-import { ThemeService } from "../shared/services/theme.service";
-import { FontAwesomeLibraryService } from "./services/font-awesome-library.service";
-import { SplashScreenService } from "./services/splash-screen.service";
+import { ThemeService } from '../shared/services/theme.service';
+import { FontAwesomeLibraryService } from './services/font-awesome-library.service';
+import { SplashScreenService } from './services/splash-screen.service';
 
 @Injectable({
-    providedIn: "root",
+    providedIn: 'root'
 })
 export class AppService {
     constructor(
