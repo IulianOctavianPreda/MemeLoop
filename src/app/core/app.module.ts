@@ -1,13 +1,17 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { RouteReuseStrategy } from "@angular/router";
-import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
-import { IonicStorageModule } from "@ionic/storage";
+import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage';
 
-import { SharedModule } from "../shared/shared.module";
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { AppService } from "./app.service";
+import { environment } from '../../environments/environment';
+import { SharedModule } from '../shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AppService } from './app.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -17,11 +21,13 @@ import { AppService } from "./app.service";
         IonicModule.forRoot(),
         AppRoutingModule,
         SharedModule,
-
-        IonicStorageModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig), // imports firebase/app needed for everything
+        AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+        AngularFireAuthModule,
+        IonicStorageModule.forRoot()
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
     constructor(service: AppService) {
