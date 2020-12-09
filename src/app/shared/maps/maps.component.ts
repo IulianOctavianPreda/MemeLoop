@@ -24,10 +24,10 @@ export class MapsComponent implements OnInit, AfterViewInit {
         longitude: -73.935242,
     };
 
-    @ViewChild("searchPlace", { static: false })
+    @ViewChild("searchPlace")
     public searchPlace: IonSearchbar;
 
-    @ViewChild("searchDestination", { static: false })
+    @ViewChild("searchDestination")
     public searchDestination: IonSearchbar;
 
     // public geoCoder:google.maps.Geocoder;

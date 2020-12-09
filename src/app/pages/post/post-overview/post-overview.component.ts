@@ -11,8 +11,8 @@ import { PostDetail } from "../../../api/types/post-detail";
     styleUrls: ["./post-overview.component.scss"],
 })
 export class PostOverviewComponent implements OnInit {
-    @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
-    @ViewChild(IonVirtualScroll, { static: false }) virtualScroll: IonVirtualScroll;
+    @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+    @ViewChild(IonVirtualScroll) virtualScroll: IonVirtualScroll;
 
     items: PostDetail[] = [];
 
