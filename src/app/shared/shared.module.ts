@@ -13,6 +13,7 @@ import { CategoryCountriesComponent } from './category-countries/category-countr
 import { LoginComponent } from './login/login.component';
 import { MapsComponent } from './maps/maps.component';
 import { UploadComponent } from './upload/upload.component';
+import { InfoModalComponent } from './info-modal/info-modal.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { UploadComponent } from './upload/upload.component';
         ProfileComponent,
         UploadComponent,
         MapsComponent,
-        LoginComponent
+        LoginComponent,
+        InfoModalComponent
     ],
     imports: [CommonModule, IonicModule, RouterModule, FontAwesomeModule, FormsModule],
     exports: [

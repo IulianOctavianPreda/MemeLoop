@@ -1,0 +1,11 @@
+<ion-card style="height: 100%">
+    <ion-card-content>
+        <ion-item lines="none">
+            <ion-text>{{ message }}</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-button (click)="modalCtrl.dismiss(false)" slot="start">Cancel</ion-button>
+            <ion-button (click)="modalCtrl.dismiss(true)" slot="end">Accept</ion-button>
+        </ion-item>
+    </ion-card-content>
+</ion-card>

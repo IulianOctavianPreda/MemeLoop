@@ -1,65 +1,40 @@
-<ion-menu
-    contentId="{{ contentId }}"
-    menuId="main-content"
-    type="overlay"
-    swipeGesture="true"
-    side="start"
->
+<ion-menu contentId="{{ contentId }}" menuId="main-content" type="overlay" swipeGesture="true" side="start">
     <ion-content>
         <ion-list id="inbox-list">
-            <ng-container
-                *ngTemplateOutlet="
-                    !isAuthenticated ? notAuthTemplate : authTemplate;
-                    context: { user: user }
-                "
-            >
-            </ng-container>
+            <ng-container *ngIf="authService.user$ | async as user; else notAuthTemplate">
+                <ng-container *ngIf="!!user; then authTemplate; else notAuthTemplate"></ng-container>
+                <ng-template #authTemplate>
+                    <ion-menu-toggle auto-hide="false" menu="main-content">
+                        <ion-item routerDirection="root" lines="none" detail="false">
+                            <!-- <ion-icon slot="start" [ios]="'home-outline'" [md]="'home-sharp'"></ion-icon> -->
+                            <ion-item [routerLink]="['./profile']" routerDirection="root" lines="none" detail="false">
+                            </ion-item>
+                            <ion-label>{{ user.email }}</ion-label>
+                            <ion-icon
+                                slot="end"
+                                [ios]="'log-out-outline'"
+                                [md]="'log-out-outline'"
+                                (click)="logout()"
+                            ></ion-icon>
 
+                            <!-- <ion-note>{{ user.email }}</ion-note> -->
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ng-template>
+            </ng-container>
             <ng-template #notAuthTemplate>
                 <ion-menu-toggle (click)="presentModal()" auto-hide="false" menu="main-content">
                     <ion-item lines="none" detail="false">
-                        <ion-icon
-                            slot="start"
-                            [ios]="'home-outline'"
-                            [md]="'home-sharp'"
-                        ></ion-icon>
-                        <ion-list-header>Login/Sign-up</ion-list-header>
+                        <ion-icon slot="start" [ios]="'home-outline'" [md]="'home-outline'"></ion-icon>
+                        <ion-list-header>Login</ion-list-header>
                     </ion-item>
                 </ion-menu-toggle>
             </ng-template>
-
-            <ng-template #authTemplate let-user="user">
-                <ion-menu-toggle auto-hide="false" menu="main-content">
-                    <ion-item
-                        [routerLink]="['./profile']"
-                        routerDirection="root"
-                        lines="none"
-                        detail="false"
-                    >
-                        <ion-icon
-                            slot="start"
-                            [ios]="'home-outline'"
-                            [md]="'home-sharp'"
-                        ></ion-icon>
-                        <ion-list-header>{{ user.name }}</ion-list-header>
-                        <!-- <ion-note>{{ user.email }}</ion-note> -->
-                    </ion-item>
-                </ion-menu-toggle>
-            </ng-template>
-
-            <ion-menu-toggle
-                auto-hide="false"
-                menu="main-content"
-                *ngFor="let p of appPages; let i = index"
-            >
+            <ion-menu-toggle auto-hide="false" menu="main-content" *ngFor="let p of appPages; let i = index">
                 <!-- (click)="selectedIndex = i" -->
                 <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false">
                     <!-- [class.selected]="selectedIndex == i" -->
-                    <ion-icon
-                        slot="start"
-                        [ios]="p.icon + '-outline'"
-                        [md]="p.icon + '-sharp'"
-                    ></ion-icon>
+                    <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
                     <ion-label>{{ p.title }}</ion-label>
                 </ion-item>
             </ion-menu-toggle>

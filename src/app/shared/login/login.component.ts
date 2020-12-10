@@ -1,29 +1,31 @@
-import { Component, OnInit } from "@angular/core";
-import { ModalController } from "@ionic/angular";
-import { UserApiService } from "src/app/api/apis/users.api";
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+
+import { AuthService } from './../../api/apis/auth.api';
 
 @Component({
-    selector: "app-login",
-    templateUrl: "./login.component.html",
-    styleUrls: ["./login.component.scss"],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
     toggle = false;
     username;
     password;
     loggedIn;
+    registrationMailSent = false;
 
-    constructor(public modalCtrl: ModalController, private userService: UserApiService) {}
+    constructor(public modalCtrl: ModalController, private authService: AuthService) {}
 
     ngOnInit() {}
 
-    login() {
+    async login() {
         if (!!this.username && !!this.password) {
             if (this.toggle) {
-                this.userService.signUp(this.username, this.password);
-                this.modalCtrl.dismiss();
+                await this.authService.register(this.username, this.password);
+                this.registrationMailSent = true;
             } else {
-                this.loggedIn = this.userService.logIn(this.username, this.password);
+                this.loggedIn = await this.authService.login(this.username, this.password);
                 if (this.loggedIn) {
                     this.modalCtrl.dismiss();
                 }
