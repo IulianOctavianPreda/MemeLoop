@@ -1,32 +1,28 @@
-import { Component, OnInit } from "@angular/core";
-import { UserApiService } from "src/app/api/apis/users.api";
+import { Component, OnInit } from '@angular/core';
 
-import { ThemeNames } from "../../shared/enums/theme-variables";
-import { ThemeService } from "../../shared/services/theme.service";
+import { ThemeNames } from '../../shared/enums/theme-variables';
+import { ThemeService } from '../../shared/services/theme.service';
+import { AuthService } from './../../api/apis/auth.api';
 
 @Component({
-    selector: "app-profile",
-    templateUrl: "./profile.component.html",
-    styleUrls: ["./profile.component.scss"],
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
     user;
     theme = ThemeNames;
-    oldUsername;
 
-    constructor(private themeService: ThemeService, private userService: UserApiService) {}
+    constructor(private themeService: ThemeService, private authService: AuthService) {}
 
     changeTheme(name: string) {
         this.themeService.setTheme(name);
     }
     ngOnInit() {
-        this.user = this.userService.getLoggedInUser();
-        this.oldUsername = this.user.name;
+        this.user = this.authService.user$.value;
     }
 
-    updateUser() {
-        if (!!this.user && !!this.user.name && !!this.user.password) {
-            this.userService.updateUser(this.oldUsername, this.user.name, this.user.password);
-        }
+    sendPasswordRecovery() {
+        this.authService.sendPasswordResetEmail(this.user);
     }
 }

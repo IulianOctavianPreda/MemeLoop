@@ -5,11 +5,11 @@
                 <ng-container *ngIf="!!user; then authTemplate; else notAuthTemplate"></ng-container>
                 <ng-template #authTemplate>
                     <ion-menu-toggle auto-hide="false" menu="main-content">
-                        <ion-item routerDirection="root" lines="none" detail="false">
+                        <ion-item lines="none" detail="false">
                             <!-- <ion-icon slot="start" [ios]="'home-outline'" [md]="'home-sharp'"></ion-icon> -->
                             <ion-item [routerLink]="['./profile']" routerDirection="root" lines="none" detail="false">
+                                <ion-label>{{ user.email }}</ion-label>
                             </ion-item>
-                            <ion-label>{{ user.email }}</ion-label>
                             <ion-icon
                                 slot="end"
                                 [ios]="'log-out-outline'"
