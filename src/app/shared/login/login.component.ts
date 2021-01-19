@@ -32,4 +32,17 @@ export class LoginComponent implements OnInit {
             }
         }
     }
+
+    async logout() {
+        this.authService.logout();
+    }
+
+    // async loginWithGoogle() {
+    //             this.loggedIn = await this.authService.loginViaGoogle();
+    //             if (this.loggedIn) {
+    //                 this.modalCtrl.dismiss();
+    //             }
+    //         }
+    //     }
+    // }
 }

@@ -28,6 +28,10 @@ export class AuthService {
         // this.router.navigate(['posts']);
     }
 
+    // async loginViaGoogle(): firebase.auth.UserCredential {
+    //     return await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    // }
+
     async register(email: string, password: string) {
         await this.afAuth.createUserWithEmailAndPassword(email, password);
         // this.sendEmailVerification();

@@ -12,8 +12,8 @@
                     <ion-card-content>
                         <app-stats
                             [stats]="item.stats"
-                            (upvoteCallback)="upvote(event)"
-                            (downvoteCallback)="downvote(event)"
+                            (upvoteCallback)="upvote($event)"
+                            (downvoteCallback)="downvote($event)"
                         ></app-stats>
                         <ion-text>Comments:</ion-text>
                         <app-comment-tree

@@ -28,6 +28,14 @@
                         <ion-item>
                             <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
                         </ion-item>
+                        <ion-item>
+                            <ion-icon
+                                slot="end"
+                                [ios]="'google-outline'"
+                                [md]="'google-outline'"
+                                (click)="logout()"
+                            ></ion-icon>
+                        </ion-item>
                         <ion-button fill="solid" type="submit" (click)="login()" [disabled]="!username || !password"
                             >Submit</ion-button
                         >
