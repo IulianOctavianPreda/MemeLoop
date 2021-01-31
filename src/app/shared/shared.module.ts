@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -10,10 +11,11 @@ import { MenuComponent } from '../core/menu/menu.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { CategoryCountriesComponent } from './category-countries/category-countries.component';
+import { InfoModalComponent } from './info-modal/info-modal.component';
 import { LoginComponent } from './login/login.component';
+import { MapComponent } from './map/map.component';
 import { MapsComponent } from './maps/maps.component';
 import { UploadComponent } from './upload/upload.component';
-import { InfoModalComponent } from './info-modal/info-modal.component';
 
 @NgModule({
     declarations: [
@@ -25,9 +27,10 @@ import { InfoModalComponent } from './info-modal/info-modal.component';
         UploadComponent,
         MapsComponent,
         LoginComponent,
-        InfoModalComponent
+        InfoModalComponent,
+        MapComponent
     ],
-    imports: [CommonModule, IonicModule, RouterModule, FontAwesomeModule, FormsModule],
+    imports: [CommonModule, HttpClientModule, IonicModule, RouterModule, FontAwesomeModule, FormsModule],
     exports: [
         LayoutHeaderComponent,
         MenuComponent,
@@ -40,7 +43,8 @@ import { InfoModalComponent } from './info-modal/info-modal.component';
         FontAwesomeModule,
         UploadComponent,
         FormsModule,
-        LoginComponent
+        LoginComponent,
+        MapComponent
     ],
     providers: [],
     entryComponents: [LoginComponent]

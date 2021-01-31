@@ -1,20 +1,20 @@
-import { Injectable, OnDestroy } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { of } from "rxjs/internal/observable/of";
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { of } from 'rxjs/internal/observable/of';
 
-import { StorageService } from "./../../shared/services/storage.service";
-import { Posts } from "./../models/posts";
-import { PostDetail, PostSave } from "./../types/post-detail";
-import { UserApiService } from "./users.api";
+import { StorageService } from './../../shared/services/storage.service';
+import { Posts } from './../models/posts';
+import { PostDetail, PostSave } from './../types/post-detail';
+import { UserApiService } from './users.api';
 
 @Injectable({
-    providedIn: "root",
+    providedIn: 'root'
 })
 export class PostApiService implements OnDestroy {
     posts: BehaviorSubject<PostDetail[]> = new BehaviorSubject<PostDetail[]>(Posts);
 
     constructor(private storage: StorageService, private userService: UserApiService) {
-        storage.getObject("posts").then((storedPosts: { posts: PostDetail[] }) => {
+        storage.getObject('posts').then((storedPosts: { posts: PostDetail[] }) => {
             console.log(storedPosts);
             if (!!storedPosts) {
                 this.posts = new BehaviorSubject<PostDetail[]>(storedPosts.posts);
@@ -22,14 +22,24 @@ export class PostApiService implements OnDestroy {
         });
     }
 
-    public loadMorePosts(skip, take) {
+    public loadMorePosts(skip, take, location) {
+        console.log(location);
+        if (location) {
+            return of(this.posts.value.filter((x) => x.location === location).slice(skip, skip + take));
+        }
         return of(this.posts.value.slice(skip, skip + take));
     }
 
-    public get() {
+    public get(location?: string) {
+        if (location) {
+            return of(this.posts.value.filter((x) => x.location === location));
+        }
         return of(this.posts.value.filter((x) => x.id < 3));
     }
 
+    public getCountries() {
+        return of(this.posts.value.map((x) => x.location));
+    }
     public getPost(id) {
         return of(this.posts.value.find((x) => x.id == id));
     }
@@ -60,10 +70,10 @@ export class PostApiService implements OnDestroy {
             comment,
             stats: {
                 upvotes: 0,
-                downvotes: 0,
+                downvotes: 0
             },
             user: this.userService.getLoggedInUser(),
-            id: Math.max(...post.comments.map((x) => x.id)),
+            id: Math.max(...post.comments.map((x) => x.id))
         });
         this.posts.next(posts);
         this.saveToStorage();
@@ -78,6 +88,7 @@ export class PostApiService implements OnDestroy {
             title: post.title,
             stats: { upvotes: 0, downvotes: 0 },
             comments: [],
+            location: post.location
         };
         this.posts.next([...this.posts.value, postDetail]);
         this.saveToStorage();
@@ -85,7 +96,7 @@ export class PostApiService implements OnDestroy {
     }
 
     saveToStorage() {
-        this.storage.setObject("posts", { posts: this.posts.value });
+        this.storage.setObject('posts', { posts: this.posts.value });
     }
 
     ngOnDestroy() {

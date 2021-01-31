@@ -1,12 +1,10 @@
 <ion-content>
     <ion-card>
         <ion-card-header>
-            <ion-card-title>Google Maps</ion-card-title>
+            <ion-card-title>Maps</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-            <div class="map" style="height: 800px;">
-                <app-maps></app-maps>
-            </div>
+            <app-map (markerClicked)="goTo($event)"></app-map>
         </ion-card-content>
     </ion-card>
 </ion-content>

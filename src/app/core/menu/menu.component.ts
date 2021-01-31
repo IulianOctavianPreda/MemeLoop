@@ -24,6 +24,11 @@ export class MenuComponent implements OnInit {
             url: 'about',
             icon: 'information-circle',
             title: 'About'
+        },
+        {
+            url: 'country',
+            icon: 'earth',
+            title: 'By country'
         }
     ];
 

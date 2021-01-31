@@ -1,6 +1,6 @@
-import { CommentDetail } from "src/app/api/types/comment-detail";
+import { CommentDetail } from 'src/app/api/types/comment-detail';
 
-import { StatsDetail } from "./stats-detail";
+import { StatsDetail } from './stats-detail';
 
 export interface PostItem {
     id: number;
@@ -14,9 +14,11 @@ export interface PostDetail {
     path: string;
     comments: CommentDetail[];
     stats: StatsDetail;
+    location: string;
 }
 
 export interface PostSave {
     title: string;
     path: string;
+    location: string;
 }

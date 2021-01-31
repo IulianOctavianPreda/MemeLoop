@@ -1,10 +1,7 @@
 <ion-content>
     <ion-grid>
         <ion-virtual-scroll [items]="items" [trackBy]="trackByFn" approxItemHeight="600px">
-            <ion-row
-                class="ion-justify-content-center"
-                *virtualItem="let item; let itemBounds = bounds"
-            >
+            <ion-row class="ion-justify-content-center" *virtualItem="let item; let itemBounds = bounds">
                 <ion-col sizeLg="4" sizeMd="12" sizeXs="12">
                     <ion-card>
                         <ion-card-header>
@@ -22,8 +19,8 @@
                         <ion-card-content>
                             <app-stats
                                 [stats]="item.stats"
-                                (upvoteCallback)="upvote(event, item.id)"
-                                (downvoteCallback)="downvote(event, item.id)"
+                                (upvoteCallback)="upvote($event, item.id)"
+                                (downvoteCallback)="downvote($event, item.id)"
                             ></app-stats>
                         </ion-card-content>
                     </ion-card>

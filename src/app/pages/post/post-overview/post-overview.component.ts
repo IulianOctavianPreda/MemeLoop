@@ -1,26 +1,24 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { IonInfiniteScroll, IonVirtualScroll, Platform } from "@ionic/angular";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IonInfiniteScroll, IonVirtualScroll, Platform } from '@ionic/angular';
 
-import { PostApiService } from "../../../api/apis/posts.api";
-import { PostDetail } from "../../../api/types/post-detail";
+import { PostApiService } from '../../../api/apis/posts.api';
+import { PostDetail } from '../../../api/types/post-detail';
 
 @Component({
-    selector: "app-post-overview",
-    templateUrl: "./post-overview.component.html",
-    styleUrls: ["./post-overview.component.scss"],
+    selector: 'app-post-overview',
+    templateUrl: './post-overview.component.html',
+    styleUrls: ['./post-overview.component.scss']
 })
 export class PostOverviewComponent implements OnInit {
     @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
     @ViewChild(IonVirtualScroll) virtualScroll: IonVirtualScroll;
 
     items: PostDetail[] = [];
-
-    constructor(
-        private service: PostApiService,
-        private activatedRoute: ActivatedRoute,
-        private platform: Platform
-    ) {}
+    location;
+    constructor(private service: PostApiService, private activatedRoute: ActivatedRoute, private platform: Platform) {
+        this.location = activatedRoute.snapshot.queryParams['location'];
+    }
 
     ngOnInit() {
         // this.platform.backButton.subscribe(() => {
@@ -34,7 +32,7 @@ export class PostOverviewComponent implements OnInit {
             const skip = this.items.length;
 
             this.service
-                .loadMorePosts(skip, 10)
+                .loadMorePosts(skip, 10, this.location)
                 .toPromise()
                 .then((results: PostDetail[]) => {
                     this.items.push(...results);
@@ -46,28 +44,28 @@ export class PostOverviewComponent implements OnInit {
 
     upvote(event, id) {
         const item = this.items.find((x) => x.id === id);
-        if (item["alreadyUpvoted"] === true) {
+        if (item['alreadyUpvoted'] === true) {
         } else {
             this.service
                 .upvote(id)
                 .toPromise()
                 .then((post) => {
                     item.stats = post.stats;
-                    item["alreadyUpvoted"] = true;
+                    item['alreadyUpvoted'] = true;
                 });
         }
     }
 
     downvote(event, id) {
         const item = this.items.find((x) => x.id === id);
-        if (item["alreadyDownvoted"] === true) {
+        if (item['alreadyDownvoted'] === true) {
         } else {
             this.service
                 .downvote(id)
                 .toPromise()
                 .then((post) => {
                     item.stats = post.stats;
-                    item["alreadyDownvoted"] = true;
+                    item['alreadyDownvoted'] = true;
                 });
         }
     }
