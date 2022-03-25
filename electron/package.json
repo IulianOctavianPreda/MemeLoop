@@ -13,7 +13,7 @@
         "electron-is-dev": "^1.1.0"
     },
     "devDependencies": {
-        "electron": "^3.0.10",
+        "electron": "^13.6.6",
         "electron-builder": "^22.5.1"
     },
     "keywords": [
